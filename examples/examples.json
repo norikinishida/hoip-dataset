@@ -1,0 +1,161 @@
+[
+    {
+        "doc_key": "ID117",
+        "pubmed_id": "PMID:32350462",
+        "sentences": [
+            "Within 19 days after symptom onset, 100% of patients tested positive for antiviral immunoglobulin-G (IgG). Seroconversion for IgG and IgM occurred simultaneously or sequentially."
+        ],
+        "triples": [
+            {
+                "head_entity": {
+                    "id": "http://purl.obolibrary.org/obo/GO_0002377",
+                    "name": "immunoglobulin production",
+                    "type": "process"
+                },
+                "fg_head_entity": {
+                    "id": "http://purl.bioontology.org/ontology/HOIP/HOIP_0039302",
+                    "name": "delayed immunoglobulin production in severe COVID-19",
+                    "type": "process"
+                },
+                "tail_entity": {
+                    "id": "http://purl.obolibrary.org/obo/GO_0016064",
+                    "name": "immunoglobulin mediated immune response",
+                    "type": "process"
+                },
+                "fg_tail_entity": {
+                    "id": "http://purl.bioontology.org/ontology/HOIP/HOIP_0039418",
+                    "name": "delayed immunoglobulin mediated immune response in severe COVID-19",
+                    "type": "process"
+                },
+                "relation": {
+                    "id": "http://purl.bioontology.org/ontology/HOIP/HOIP_0000069",
+                    "name": "has result"
+                },
+                "context": {
+                    "id": "http://purl.bioontology.org/ontology/HOIP/HOIP_0039222",
+                    "name": "severe COVID-19 course"
+                },
+                "course": {
+                    "id": "http://purl.bioontology.org/ontology/HOIP/HOIP_0039222",
+                    "name": "severe COVID-19 course"
+                },
+                "merged": false
+            }
+        ]
+    },
+    {
+        "doc_key": "ID297",
+        "pubmed_id": "Wikipedia:heart_failure",
+        "sentences": [
+            "Failure of the left side of the heart causes blood to back up (be congested) into the lungs, causing respiratory symptoms and fatigue due to insufficient supply of oxygenated blood.",
+            "For example, left ventricular failure allows pulmonary edema and pulmonary hypertension to occur, which increase stress on the right ventricle."
+        ],
+        "triples": [
+            {
+                "head_entity": {
+                    "id": "http://purl.bioontology.org/ontology/HOIP/HOIP_0040934",
+                    "name": "left ventricular dysfunction",
+                    "type": "process"
+                },
+                "fg_head_entity": {
+                    "id": "http://purl.bioontology.org/ontology/HOIP/HOIP_0041799",
+                    "name": "left ventricular dysfunction in COVID-19 associated with ARDS",
+                    "type": "process"
+                },
+                "tail_entity": {
+                    "id": "http://purl.bioontology.org/ontology/HOIP/HOIP_0040936",
+                    "name": "decreasing cardiac output",
+                    "type": "process"
+                },
+                "fg_tail_entity": {
+                    "id": "http://purl.bioontology.org/ontology/HOIP/HOIP_0041800",
+                    "name": "decreasing cardiac output in COVID-19 associated with ARDS",
+                    "type": "process"
+                },
+                "relation": {
+                    "id": "http://purl.bioontology.org/ontology/HOIP/HOIP_0000069",
+                    "name": "has result"
+                },
+                "context": {
+                    "id": "http://purl.bioontology.org/ontology/HOIP/HOIP_0036006",
+                    "name": "COVID-19 course associated with acute respiratory distress syndrome"
+                },
+                "course": {
+                    "id": "http://purl.bioontology.org/ontology/HOIP/HOIP_0036006",
+                    "name": "COVID-19 course associated with acute respiratory distress syndrome"
+                },
+                "merged": false
+            },
+            {
+                "head_entity": {
+                    "id": "http://purl.bioontology.org/ontology/HOIP/HOIP_0041592",
+                    "name": "pulmonary congestion",
+                    "type": "process"
+                },
+                "fg_head_entity": {
+                    "id": "http://purl.bioontology.org/ontology/HOIP/HOIP_0041824",
+                    "name": "pulmonary congestion in COVID-19 associated with ARDS",
+                    "type": "process"
+                },
+                "tail_entity": {
+                    "id": "http://purl.bioontology.org/ontology/HOIP/HOIP_0036007",
+                    "name": "respiratory dysfunction",
+                    "type": "process"
+                },
+                "fg_tail_entity": {
+                    "id": "http://purl.bioontology.org/ontology/HOIP/HOIP_0036008",
+                    "name": "respiratory dysfunction in COVID-19 associated with ARDS",
+                    "type": "process"
+                },
+                "relation": {
+                    "id": "http://purl.bioontology.org/ontology/HOIP/HOIP_0000069",
+                    "name": "has result"
+                },
+                "context": {
+                    "id": "http://purl.bioontology.org/ontology/HOIP/HOIP_0036006",
+                    "name": "COVID-19 course associated with acute respiratory distress syndrome"
+                },
+                "course": {
+                    "id": "http://purl.bioontology.org/ontology/HOIP/HOIP_0036006",
+                    "name": "COVID-19 course associated with acute respiratory distress syndrome"
+                },
+                "merged": false
+            },
+            {
+                "head_entity": {
+                    "id": "http://purl.bioontology.org/ontology/HOIP/HOIP_0041592",
+                    "name": "pulmonary congestion",
+                    "type": "process"
+                },
+                "fg_head_entity": {
+                    "id": "http://purl.bioontology.org/ontology/HOIP/HOIP_0041824",
+                    "name": "pulmonary congestion in COVID-19 associated with ARDS",
+                    "type": "process"
+                },
+                "tail_entity": {
+                    "id": "http://purl.bioontology.org/ontology/HOIP/HOIP_0041008",
+                    "name": "increasing blood pressure",
+                    "type": "process"
+                },
+                "fg_tail_entity": {
+                    "id": "http://purl.bioontology.org/ontology/HOIP/HOIP_0041011",
+                    "name": "increasing blood pressure in lung in COVID-19 associated with ARDS",
+                    "type": "process"
+                },
+                "relation": {
+                    "id": "http://purl.bioontology.org/ontology/HOIP/HOIP_0000069",
+                    "name": "has result"
+                },
+                "context": {
+                    "id": "http://purl.bioontology.org/ontology/HOIP/HOIP_0036006",
+                    "name": "COVID-19 course associated with acute respiratory distress syndrome"
+                },
+                "course": {
+                    "id": "http://purl.bioontology.org/ontology/HOIP/HOIP_0036006",
+                    "name": "COVID-19 course associated with acute respiratory distress syndrome"
+                },
+                "merged": false
+            }
+        ]
+    }
+]

@@ -1,0 +1,138 @@
+#ミトコンドリア障害機序とミトコンドリア障害依存プロセスを指定し，機序を構成するプロセスとそのターゲットを探索するクエリ．
+#プロセスはソース，ターゲットともにgeneral level (level2)をequivalent classを用いて取得． ターゲットがプロセスの場合，コンテキストの機序も取得
+#Results:/home/yuki/my_VS_code_sever/AIP_NLP/get_level_2_general_relation/mito_queryResults (9).csv
+#Results: csv2xlsx /home/yuki/my_VS_code_sever/AIP_NLP/get_level_2_general_relation/mito_1986_lv2_231027.xlsx
+#HOIP_0001986 mitochondrial disorder course
+#HOIP_0039022 severe COVID-19 course
+#HOIP_0060024 cellular senescence
+#HOIP_0001987mitochondrial disorder dependent process
+#HOIP_0060021 cellular senescence course-specific process
+#HOIP_0037004coronavirus infectous disease dependent process
+PREFIX rdfs:<http://www.w3.org/2000/01/rdf-schema#>
+PREFIX rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl:<http://www.w3.org/2002/07/owl#>
+PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX hoip: <http://purl.bioontology.org/ontology/HOIP/>
+
+select distinct ?course ?course_label ?process ?process_label ?lv2 ?lv2_label  ?relation ?relation_type ?target ?target_label ?lv2_target ?lv2_target_label ?context_target ?context_target_label ?participant_type ?pubmedID ?description{
+{
+<http://purl.bioontology.org/ontology/HOIP/HOIP_0001986> rdfs:subClassOf* ?course.
+?course rdfs:subClassOf+ <http://purl.bioontology.org/ontology/HOIP/HOIP_0000009>;
+          rdfs:subClassOf ?course_blank;
+          rdfs:label ?course_label.
+FILTER (lang(?course_label) = 'en')
+?course_blank (owl:someValuesFrom/rdfs:subClassOf)* ?process_blank.
+?process_blank owl:someValuesFrom ?process.
+FILTER(isBlank(?course_blank))
+FILTER(isBlank(?process_blank))
+FILTER(!isBlank(?process))
+{?process rdfs:subClassOf+ <http://purl.bioontology.org/ontology/HOIP/HOIP_0001987>.}
+?process rdfs:label ?process_label.
+FILTER (lang(?process_label) = 'en')
+} optional {
+?process rdfs:subClassOf ?related_blank.
+?related_blank owl:onProperty ?relation;
+(owl:someValuesFrom|owl:allValuesFrom) ?target.
+?relation rdfs:label ?relation_type.
+      OPTIONAL {
+        ?target rdfs:subClassOf+ <http://purl.obolibrary.org/obo/BFO_0000015>.
+        BIND("process" as ?participant_type)
+      }
+      OPTIONAL {
+        ?target rdfs:subClassOf+ <http://purl.obolibrary.org/obo/HP_0000118>.
+        BIND("phenotype" as ?participant_type)
+      }
+
+      OPTIONAL {
+        ?target rdfs:subClassOf+ <http://purl.obolibrary.org/obo/SYMP_0000462>.
+        BIND("symptom" as ?participant_type)
+      }
+
+      OPTIONAL {
+        ?target rdfs:subClassOf+ <http://purl.obolibrary.org/obo/CHEBI_25367>.
+        BIND("molecule" as ?participant_type)
+      }
+
+      OPTIONAL {
+        ?target rdfs:subClassOf+ <http://purl.bioontology.org/ontology/HOIP/HOIP_0002107>.
+        BIND("molecular complex" as ?participant_type)
+      }
+
+      OPTIONAL {
+        ?target rdfs:subClassOf+ <http://purl.obolibrary.org/obo/VO_0000001>.
+        BIND("vaccine" as ?participant_type)
+      }
+
+      OPTIONAL {
+        ?target rdfs:subClassOf+ <http://purl.obolibrary.org/obo/CHEBI_50860>.
+        BIND("compound" as ?participant_type)
+      }
+
+      OPTIONAL {
+        ?target rdfs:subClassOf+ <http://purl.obolibrary.org/obo/DOID_4>.
+        BIND("disease" as ?participant_type)
+      }
+
+      OPTIONAL {
+        ?target rdfs:subClassOf+ <http://purl.obolibrary.org/obo/BFO_0000040>.
+        BIND("material" as ?participant_type)
+      }
+?target rdfs:label ?target_label;
+FILTER (lang(?target_label) = 'en')
+FILTER (isBlank(?related_blank))
+}optional{
+?process rdfs:subClassOf ?parent.
+{?parent rdfs:subClassOf+ <http://purl.bioontology.org/ontology/HOIP/HOIP_0001715>.}
+?parent rdfs:label ?par_label.
+bind('is-a' as ?par_type_label)
+FILTER (lang(?par_label) = 'en')
+}optional
+ {
+  ?process a owl:Class ;
+         oboInOwl:hasDbXref ?pubmedID .
+  ?axiom a owl:Axiom ;
+          owl:annotatedSource ?process ;
+          owl:annotatedTarget ?pubmedID ;
+          dc:description ?description .
+}optional
+  {
+    ?process rdfs:subClassOf+ <http://purl.bioontology.org/ontology/HOIP/HOIP_0001987>.  
+    ?process owl:equivalentClass[
+            rdf:type owl:Class ;
+            owl:intersectionOf (
+                  ?lv2[
+              a owl:Restriction ;
+              owl:onProperty <http://purl.bioontology.org/ontology/HOIP/HOIP_0000774>  ;
+              owl:allValuesFrom  ?context
+                       ]
+      )
+  ].
+ ?lv2 rdfs:label ?lv2_label.
+ ?context rdfs:label ?context_label.
+  FILTER (lang(?lv2_label) = 'en')
+  #FILTER (?context =  hoip:HOIP_0060195 || ?context =  hoip:HOIP_0039222 ||?context =  hoip:HOIP_0036006||?context =  hoip:HOIP_0037002) .
+  FILTER (lang(?context_label) = 'en') .
+  }
+  optional
+  {
+    #検討中．
+     ?target rdfs:subClassOf+ <http://purl.bioontology.org/ontology/HOIP/HOIP_0001987>. 
+     ?target owl:equivalentClass[
+            rdf:type owl:Class ;
+            owl:intersectionOf (
+                  ?lv2_target[
+              a owl:Restriction ;
+              owl:onProperty <http://purl.bioontology.org/ontology/HOIP/HOIP_0000774> ;
+              owl:allValuesFrom  ?context_target
+                       ]
+      )
+  ].
+ ?lv2_target rdfs:label ?lv2_target_label.
+ ?context_target rdfs:label ?context_target_label.
+ FILTER (lang(?lv2_target_label) = 'en')
+ #FILTER (?context_target =  hoip:HOIP_0060195 || ?context =  hoip:HOIP_0039222 ||?context =  hoip:HOIP_0036006||?context =  hoip:HOIP_0037002) .
+ FILTER (lang(?context_target_label) = 'en') .
+  }
+} order by ?process
+
