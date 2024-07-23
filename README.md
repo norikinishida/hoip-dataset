@@ -13,10 +13,7 @@ To accelerate the research on **mention-agnostic** information extraction, we in
 - HOIP dataset requires the capability to infer about entities and relations between them that are not explicitly described, using background knowledge.
 
 The following figure shows an example in the HOIP dataset along with the approach proposed in our paper.
-<p align="center>
-<img src="https://github.com/norikinishida/hoip-dataset/docs/bionlp2024_figure1.png" width="400">
-</p>
-
+![example](https://github.com/norikinishida/hoip-dataset/blob/main/docs/bionlp2024_figure1.png)
 
 For the details of the dataset, please see our paper.
 
